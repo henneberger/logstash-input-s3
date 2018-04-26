@@ -395,6 +395,7 @@ class LogStash::Inputs::S3 < LogStash::Inputs::Base
   private
   def get_s3object
     options = @additional_settings.merge(aws_options_hash || {})
+    options = options.merge({force_path_style: true})
     s3 = Aws::S3::Resource.new(options)
   end
 
